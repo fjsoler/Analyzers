@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageOutputDir>C:\Users\javier\RiderProjects\RiderNugets</PackageOutputDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>Solete.Analizers</PackageId>
+        <PackageVersion>1.0.1</PackageVersion>
+        <Authors>Fco Javier Soler</Authors>
+        <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
+        <PackageProjectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</PackageProjectUrl>
+        <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
+        <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Analyzer</Description>
+        <PackageReleaseNotes>Add data contract analyzer required (SR0001).</PackageReleaseNotes>
+        <Copyright>Copyright</Copyright>
+        <PackageTags>DataContractAnalyzer, analyzers</PackageTags>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <!--<PackageOutputDir>C:\Users\javier\RiderProjects\RiderNugets\</PackageOutputDir>-->
+
+        <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Solete.Analyzers.Fixes\Solete.Analyzers.Fixes.csproj" />
+        <ProjectReference Include="..\Solete.Analyzers\Solete.Analyzers.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <Target Name="_AddAnalyzersToOutput">
+        <ItemGroup>
+            <TfmSpecificPackageFile Include="$(OutputPath)\Solete.Analyzers.dll" PackagePath="analyzers/dotnet/cs" />
+            <TfmSpecificPackageFile Include="$(OutputPath)\Solete.Analyzers.Fixes.dll" PackagePath="analyzers/dotnet/cs" />
+        </ItemGroup>
+    </Target>
+
+</Project>
