@@ -1,14 +1,5 @@
-/source/packages
-/source/.idea
-/source/Solete.Analyzers/bin
-/source/Analyzers.sln.DotSettings.user
-/samples/SampleApp.sln.DotSettings.user
-/samples/packages
-/source/Solete.Analyzers/obj
-/source/Solete.Analyzers.Fixes/bin
-/source/Solete.Analyzers.Fixes/obj
-/source/Solete.Analyzers.Package/bin
-/source/Solete.Analyzers.Package/obj
-/samples/.idea
+*.sln.DotSettings.user
+packages
 bin
 obj
+.idea
