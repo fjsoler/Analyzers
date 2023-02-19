@@ -5,3 +5,7 @@
 /samples/SampleApp.sln.DotSettings.user
 /samples/packages
 /source/Solete.Analyzers/obj
+/source/Solete.Analyzers.Fixes/bin
+/source/Solete.Analyzers.Fixes/obj
+/source/Solete.Analyzers.Package/bin
+/source/Solete.Analyzers.Package/obj
