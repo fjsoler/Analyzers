@@ -21,6 +21,15 @@ public static class CSharpAnalyzerVerifier<TAnalyzer,TCodeFix>
     
         return test.RunAsync();
     }
+    
+    public static Task VerifyAnalyzerAsync(string fileName, string fileContent,  params DiagnosticResult[] expected)
+    {
+        var test = new TestAnalyzer();
+        test.TestState.AdditionalFiles.Add((fileName, fileContent));
+        test.ExpectedDiagnostics.AddRange(expected);
+    
+        return test.RunAsync();
+    }
 
     public static Task VerifyFixProviderAsync(List<string> sourceFileList, string codeFix, ReferenceAssemblies referenceAssemblies,  params DiagnosticResult[] expected)
     {
