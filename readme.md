@@ -1,12 +1,31 @@
-# Roslyn Analyzers
+# Roslyn Analyzers (v1.0.1)
 
-This project is a tutorial to learn to develop a rosling analizers.
+This project is a tutorial to learn to develop a Roslyng Analizers.
 
-Goals: TDD, Compatibility with Visual Studio (2019,2022) and Rider, unique version compatible with net framework or net core project.
+Goals: TDD, compatibility with JetBrains Rider & Visual Studio 2022, Net Standard 2.0 for compatibility with net framework 4.6.2+ or net core project 5.0, 6.0, 7.0.
 
-## Solete.Analizer:
+## What is an Analyzer?
 
-This project have two samples analizers:
+A code analyser is software that allows you to analyse code without the need to execute it. It deals with the detection of vulnerabilities and functional errors in software in phases prior to deployment. In this example we are going to focus on the development phase and on the analysers that the Roslyn Net Compiler allows us to develop. 
+
+## What is a Roslyn Analyzer?
+
+Roslyn is Net compiler... 
+
+
+## Why do I need an analyser?
+
+
+
+## How develop an analyzer?
+
+## How to test an debug analyser?
+
+## How deploy an analyzer?
+
+## Solete.Analizer
+
+The version 1.0.1 contains two samples analizers:
 
 |DiagnosticId | Severity | Description |
 |-------------|----------|-------------|
@@ -29,3 +48,6 @@ https://www.meziantou.net/working-with-types-in-a-roslyn-analyzer.htm
 
 Complex Refactoring With Roslyn Compilers
 https://hackernoon.com/complex-refactoring-with-roslyn-compilers-h32n310k
+
+Roslyn-analyzers-docs
+https://roslyn-analyzers.readthedocs.io/en/latest/nuget-packages.html
