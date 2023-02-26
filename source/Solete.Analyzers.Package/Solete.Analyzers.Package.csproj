@@ -10,12 +10,12 @@
 
     <PropertyGroup>
         <PackageId>Solete.Analizers</PackageId>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
         <Authors>Fco Javier Soler</Authors>
         <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
-        <PackageProjectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/fjsoler/Analyzers</PackageProjectUrl>
         <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
-        <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
+        <RepositoryUrl>https://github.com/fjsoler/Analyzers</RepositoryUrl>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Description>Analyzer</Description>
         <PackageReleaseNotes>Add data contract analyzer required (SR0001).</PackageReleaseNotes>

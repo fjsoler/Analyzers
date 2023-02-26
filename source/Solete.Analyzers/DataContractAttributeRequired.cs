@@ -8,17 +8,14 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Solete.Analyzers;
 
-/// <summary>
-/// This analyzer checks if a base class has data contract attribute. All derived classes must have data contract attribute.
-/// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class DataContractAttributedRequired : DiagnosticAnalyzer
+public class DataContractAttributeRequired : DiagnosticAnalyzer
 {
     public const string DiagnosticId = "SR0001";
 
-    private static readonly LocalizableString Title = "Data contract attribute is required";
-    private static readonly LocalizableString MessageFormat = "The class '{0}' need the data contract attribute";
-    private static readonly LocalizableString Description = "If base class have a data contract attribute, data member attribute is required for all derived classes.";
+    private static readonly string Title = "Data contract attribute is required";
+    private static readonly string MessageFormat = "The class '{0}' need the data contract attribute";
+    private static readonly string Description = "If base class have a data contract attribute, data member attribute is required for all derived classes.";
 
     private const string Category = "Serialization";
 
@@ -33,7 +30,7 @@ public class DataContractAttributedRequired : DiagnosticAnalyzer
 
         context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.ClassDeclaration);
     }
-
+    
     private static void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
         if (context.Node is not ClassDeclarationSyntax classNode)
@@ -42,15 +39,14 @@ public class DataContractAttributedRequired : DiagnosticAnalyzer
         if (context.SemanticModel.GetDeclaredSymbol(context.Node) is not ITypeSymbol classSymbol)
             return;
 
-        if (classSymbol.BaseType == null )
+        if (classSymbol.BaseType != null && !classSymbol.BaseType.GetAttributes()
+                .Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
             return;
 
-        if (!classSymbol.BaseType.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-            return;
-        
         if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
         {
-            var diagnostic = Diagnostic.Create(Rule, classNode.GetLocation(), classNode.Identifier);
+            var diagnostic = Diagnostic.Create(DataContractAttributeRequired.Rule, classNode.GetLocation(),
+                classNode.Identifier);
             context.ReportDiagnostic(diagnostic);
         }
     }

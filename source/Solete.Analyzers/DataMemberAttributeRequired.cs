@@ -17,9 +17,9 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
 {
     public const string DiagnosticId = "SR0002";
 
-    private static readonly LocalizableString Title = "Data member attribute is required";
-    private static readonly LocalizableString MessageFormat = "The property '{0}' need the data member attribute";
-    private static readonly LocalizableString Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
+    private static readonly string Title = "Data member attribute is required";
+    private static readonly string MessageFormat = "The property '{0}' need the data member attribute";
+    private static readonly string Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
 
     private const string Category = "Serialization";
 
@@ -40,21 +40,12 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
         if (context.Node is not ClassDeclarationSyntax classNode)
             return;
         
-        if (context.SemanticModel.GetDeclaredSymbol(context.Node) is not ITypeSymbol classSymbol)
+        if (context.SemanticModel.GetDeclaredSymbol(classNode) is not ITypeSymbol classSymbol)
             return;
 
         if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-        {
-            if (classSymbol.BaseType is INamedTypeSymbol baseClassSymbol)
-                return;
-            //Check if class has base class
-            if (classSymbol.BaseType.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-            {
-                //Has DataContract Attribute
-            }
             return;
-        }
-
+        
         foreach (var propertyNode in classNode.DescendantNodes().OfType<PropertyDeclarationSyntax>())
         {
             if (!propertyNode.Modifiers.Any(x => x.IsKind(SyntaxKind.PublicKeyword)))

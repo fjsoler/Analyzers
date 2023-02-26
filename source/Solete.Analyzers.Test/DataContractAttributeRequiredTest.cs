@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Testing;
 using Xunit;
-using VerifyCs = Solete.Analyzers.Test.Utilities.CSharpAnalyzerVerifier<Solete.Analyzers.DataContractAttributedRequired, Solete.Analyzers.Fixes.DataContractAttributeRequiredCodeFixProvider>;
-
+using VerifyCs = Solete.Analyzers.Test.Utilities.CSharpAnalyzerVerifier<Solete.Analyzers.DataContractAttributeRequired, Solete.Analyzers.Fixes.DataContractAttributeRequiredCodeFixProvider>;
 
 namespace Solete.Analyzers.Test;
 
@@ -85,7 +85,7 @@ namespace TestNamespace
 }
 "};
 
-        var expectedDiagnostic = new DiagnosticResult(DataContractAttributedRequired.Rule).WithLocation(9, 5).WithArguments("TestClass");
+        var expectedDiagnostic = new DiagnosticResult(DataContractAttributeRequired.Rule).WithLocation(9, 5).WithArguments("TestClass");
         
         await VerifyCs.VerifyAnalyzerAsync(sourceFileList, _referenceAssemblies, expectedDiagnostic);
     }
@@ -144,7 +144,7 @@ namespace TestNamespace
     {}
 }
 "};
-        var expectedDiagnostic = new DiagnosticResult(DataContractAttributedRequired.Rule).WithLocation(9, 5).WithArguments("TestClass");
+        var expectedDiagnostic = new DiagnosticResult(DataContractAttributeRequired.Rule).WithLocation(9, 5).WithArguments("TestClass");
         
         await VerifyCs.VerifyFixProviderAsync(sourceFileList, sourceFixCodeList, _referenceAssemblies, expectedDiagnostic);
     }

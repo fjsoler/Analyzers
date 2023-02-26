@@ -22,10 +22,12 @@ public static class CSharpAnalyzerVerifier<TAnalyzer,TCodeFix>
         return test.RunAsync();
     }
     
-    public static Task VerifyAnalyzerAsync(string fileName, string fileContent,  params DiagnosticResult[] expected)
+    public static Task VerifyAnalyzerAsync(string sourceCode, string additionalFileName, string additionalFileContent,  params DiagnosticResult[] expected)
     {
         var test = new TestAnalyzer();
-        test.TestState.AdditionalFiles.Add((fileName, fileContent));
+        test.TestState.Sources.Add(sourceCode);
+        if (additionalFileName != null && additionalFileContent != null)
+            test.TestState.AdditionalFiles.Add((additionalFileName, additionalFileContent));
         test.ExpectedDiagnostics.AddRange(expected);
     
         return test.RunAsync();

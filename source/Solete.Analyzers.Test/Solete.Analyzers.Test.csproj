@@ -217,7 +217,7 @@
         <Compile Include="DataMemberAttributeRequiredTest.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Utilities\CSharpAnalyzerVerifiers.cs" />
-        <Compile Include="VersionMdFileAnalizer.cs" />
+        <Compile Include="VersionMdFileAnalizerTest.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="App.config" />
