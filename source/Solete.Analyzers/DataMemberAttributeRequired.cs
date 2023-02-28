@@ -8,10 +8,6 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Solete.Analyzers;
 
-/// <summary>
-/// This analyzer checks if a class has the data contract attribute and if so checks that all public properties
-/// contain the data member attribute. If they do not, an compilation error is generated. 
-/// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class DataMemberAttributeRequired : DiagnosticAnalyzer
 {
@@ -37,16 +33,14 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
 
     private static void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
-        if (context.Node is not ClassDeclarationSyntax classNode)
-            return;
-        
-        if (context.SemanticModel.GetDeclaredSymbol(classNode) is not ITypeSymbol classSymbol)
-            return;
+        var classNode = context.Node as ClassDeclarationSyntax;
+
+        var classSymbol = context.SemanticModel.GetDeclaredSymbol(classNode) as ITypeSymbol;
 
         if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
             return;
         
-        foreach (var propertyNode in classNode.DescendantNodes().OfType<PropertyDeclarationSyntax>())
+        foreach (var propertyNode in classNode!.DescendantNodes().OfType<PropertyDeclarationSyntax>())
         {
             if (!propertyNode.Modifiers.Any(x => x.IsKind(SyntaxKind.PublicKeyword)))
                 continue;

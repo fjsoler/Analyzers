@@ -1,4 +1,4 @@
-# Roslyn Analyzers (v1.0.1)
+# Roslyn Analyzers (v1.0.2)
 
 This project is a tutorial to learn to develop a Roslyng Analizers.
 
@@ -25,12 +25,15 @@ Roslyn is Net compiler...
 
 ## Solete.Analizer
 
-The version 1.0.1 contains two samples analizers:
+The version 1.0.2 contains two samples analizers:
 
 |DiagnosticId | Severity | Description |
 |-------------|----------|-------------|
 |SR0001       | Error    | Data contract attribute required. If a class have a base class with data contract attribute, this class must have data contract attribute.|
 |SR0002       | Error    | Data member attribute required. If a class have a data contract attribute, all public properties must have data member attribute. |
+|SR0003       | Error    | The version.md file not exist. If the file version.md exists, check the value of Build Action is 'AdditionalFiles' in its properties.|
+|SR0004       | Error    | The version.md file have not contain the title section.|
+|SR0005       | Error    | The version.md file have not contain the version section.|
 
 ## References:
 

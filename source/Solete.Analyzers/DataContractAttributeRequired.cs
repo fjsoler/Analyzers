@@ -33,21 +33,18 @@ public class DataContractAttributeRequired : DiagnosticAnalyzer
     
     private static void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
-        if (context.Node is not ClassDeclarationSyntax classNode)
-            return;
+        var classNode = context.Node as ClassDeclarationSyntax;
 
-        if (context.SemanticModel.GetDeclaredSymbol(context.Node) is not ITypeSymbol classSymbol)
-            return;
+        var classSymbol = context.SemanticModel.GetDeclaredSymbol(classNode) as ITypeSymbol;
 
         if (classSymbol.BaseType != null && !classSymbol.BaseType.GetAttributes()
                 .Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
             return;
 
-        if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-        {
-            var diagnostic = Diagnostic.Create(DataContractAttributeRequired.Rule, classNode.GetLocation(),
-                classNode.Identifier);
-            context.ReportDiagnostic(diagnostic);
-        }
+        if (classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
+            return;
+        
+        var diagnostic = Diagnostic.Create(DataContractAttributeRequired.Rule, classNode!.GetLocation(), classNode.Identifier);
+        context.ReportDiagnostic(diagnostic);
     }
 }

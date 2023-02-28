@@ -55,6 +55,20 @@ public class VersionMdFileTest
         var expectedDiagnostic = new DiagnosticResult(VersionMdFileAnalyzer.RuleVersionMdVersionNotExist);
         await VerifyCs.VerifyAnalyzerAsync(SourceCode, additionalFileName, additionalFileContent,expectedDiagnostic);
     }
-    
+
+    [Fact]
+    public async void VersionMdFileEmptyShouldThrowAllDiagnostic()
+    {
+        const string additionalFileName = "version.md";
+        const string additionalFileContent = @"";
+        
+        DiagnosticResult[] expectedDiagnostic =
+        {
+            new DiagnosticResult(VersionMdFileAnalyzer.RuleVersionMdTittleNotExist),
+            new DiagnosticResult(VersionMdFileAnalyzer.RuleVersionMdVersionNotExist)
+        };
+        
+        await VerifyCs.VerifyAnalyzerAsync(SourceCode, additionalFileName, additionalFileContent,expectedDiagnostic);
+    }
     //TODO: Test all messages of diagnostic in all Analizers diagnotic
 }
