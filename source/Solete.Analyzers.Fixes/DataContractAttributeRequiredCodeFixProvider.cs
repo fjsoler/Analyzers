@@ -18,7 +18,7 @@ public class DataContractAttributeRequiredCodeFixProvider : CodeFixProvider
     
     public sealed override ImmutableArray<string> FixableDiagnosticIds
     {
-        get { return ImmutableArray.Create(DataContractAttributedRequired.DiagnosticId); }
+        get { return ImmutableArray.Create(DataContractAttributeRequired.DiagnosticId); }
     }
 
     public sealed override FixAllProvider GetFixAllProvider()

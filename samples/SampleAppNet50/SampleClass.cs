@@ -1,14 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
-namespace SampleAppNet4._8
+namespace SampleAppNet50
 {
-    [DataContract]
-    public class SampleClass
+    public class SampleClass : BaseClass
     {
         private string Secret { get; set; }
-        [DataMember]
         public bool Activate { get; set; }
-        [DataMember]
         public string Description { get; set; }
         public string Address { get; set; }
     }

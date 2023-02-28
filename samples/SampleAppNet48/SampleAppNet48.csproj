@@ -7,8 +7,8 @@
         <ProjectGuid>{08F7A53E-062D-404D-ABFC-FB88993FB951}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>SampleAppNet4._8</RootNamespace>
-        <AssemblyName>SampleAppNet4._8</AssemblyName>
+        <RootNamespace>SampleAppNet48</RootNamespace>
+        <AssemblyName>SampleAppNet48</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -39,15 +39,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Class1.cs" />
+        <Compile Include="BaseClass.cs" />
+        <Compile Include="SampleClass.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <Analyzer Include="..\packages\Solete.Analizers.1.0.1\analyzers\dotnet\cs\Solete.Analyzers.dll" />
-      <Analyzer Include="..\packages\Solete.Analizers.1.0.1\analyzers\dotnet\cs\Solete.Analyzers.Fixes.dll" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

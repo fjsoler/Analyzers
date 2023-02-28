@@ -8,18 +8,14 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Solete.Analyzers;
 
-/// <summary>
-/// This analyzer checks if a class has the data contract attribute and if so checks that all public properties
-/// contain the data member attribute. If they do not, an compilation error is generated. 
-/// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class DataMemberAttributeRequired : DiagnosticAnalyzer
 {
     public const string DiagnosticId = "SR0002";
 
-    private static readonly LocalizableString Title = "Data member attribute is required";
-    private static readonly LocalizableString MessageFormat = "The property '{0}' need the data member attribute";
-    private static readonly LocalizableString Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
+    private static readonly string Title = "Data member attribute is required";
+    private static readonly string MessageFormat = "The property '{0}' need the data member attribute";
+    private static readonly string Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
 
     private const string Category = "Serialization";
 
@@ -37,25 +33,14 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
 
     private static void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
-        if (context.Node is not ClassDeclarationSyntax classNode)
-            return;
-        
-        if (context.SemanticModel.GetDeclaredSymbol(context.Node) is not ITypeSymbol classSymbol)
-            return;
+        var classNode = context.Node as ClassDeclarationSyntax;
+
+        var classSymbol = context.SemanticModel.GetDeclaredSymbol(classNode) as ITypeSymbol;
 
         if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-        {
-            if (classSymbol.BaseType is INamedTypeSymbol baseClassSymbol)
-                return;
-            //Check if class has base class
-            if (classSymbol.BaseType.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-            {
-                //Has DataContract Attribute
-            }
             return;
-        }
-
-        foreach (var propertyNode in classNode.DescendantNodes().OfType<PropertyDeclarationSyntax>())
+        
+        foreach (var propertyNode in classNode!.DescendantNodes().OfType<PropertyDeclarationSyntax>())
         {
             if (!propertyNode.Modifiers.Any(x => x.IsKind(SyntaxKind.PublicKeyword)))
                 continue;
