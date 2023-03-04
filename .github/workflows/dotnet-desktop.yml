@@ -74,6 +74,9 @@ jobs:
       run: cd $GITHUB_WORKSPACE\a\Analyzers\Analyzers\source
 
     - name: Folder
+      run: cd source   
+
+    - name: Folder
       run: dir   
 
     # Execute all unit tests in the solution
