@@ -78,4 +78,4 @@ jobs:
       run: |
            cd source
            dir
-           dotnet test
+           dotnet test -v d
