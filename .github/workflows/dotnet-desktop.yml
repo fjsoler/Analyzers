@@ -72,7 +72,10 @@ jobs:
       
     - name: Navigate to Workspace
       run: cd $GITHUB_WORKSPACE\a\Analyzers\Analyzers\source
-      
+
+    - name: Folder
+      run: Get-Location      
+
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
