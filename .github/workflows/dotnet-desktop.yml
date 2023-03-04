@@ -75,7 +75,8 @@ jobs:
       run: |
            cd source
            dotnet test --logger "trx;LogFileName=test-results.trx"
-           cd Solete.Analyzers.Test\TestResults
+           dir
+           cd Solete.Analyzers.Test
            dir
            
     # Test report
