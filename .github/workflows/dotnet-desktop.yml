@@ -71,7 +71,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       
     - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE\a\Analyzers\Analyzers
+      run: cd $GITHUB_WORKSPACE\a\Analyzers\Analyzers\source
       
     # Execute all unit tests in the solution
     - name: Execute unit tests
