@@ -85,7 +85,7 @@ jobs:
            dotnet build
            dotnet test --logger "trx;LogFileName=test-results.trx"
            dir
-           cd Solete.Analyzers.Test
+           cd Solete.Analyzers.Test\TestResults
            dir
            
     # Test report
