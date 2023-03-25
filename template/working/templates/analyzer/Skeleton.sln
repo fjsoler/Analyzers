@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers", "Skeleton.Analyzers\Skeleton.Analyzers.csproj", "{D525805A-0EFB-44D4-83FD-99F70BDC5380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers.Fixes", "Skeleton.Analyzers.Fixes\Skeleton.Analyzers.Fixes.csproj", "{34F43F73-3B9A-4CC2-AEAD-6318C305283B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers.Test", "Skeleton.Analyzers.Test\Skeleton.Analyzers.Test.csproj", "{19E21137-7F89-4503-898B-132872226C5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D525805A-0EFB-44D4-83FD-99F70BDC5380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D525805A-0EFB-44D4-83FD-99F70BDC5380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D525805A-0EFB-44D4-83FD-99F70BDC5380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D525805A-0EFB-44D4-83FD-99F70BDC5380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F43F73-3B9A-4CC2-AEAD-6318C305283B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F43F73-3B9A-4CC2-AEAD-6318C305283B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F43F73-3B9A-4CC2-AEAD-6318C305283B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F43F73-3B9A-4CC2-AEAD-6318C305283B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E21137-7F89-4503-898B-132872226C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E21137-7F89-4503-898B-132872226C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E21137-7F89-4503-898B-132872226C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E21137-7F89-4503-898B-132872226C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
