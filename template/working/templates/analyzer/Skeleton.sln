@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers.Fixes", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers.Test", "Skeleton.Analyzers.Test\Skeleton.Analyzers.Test.csproj", "{19E21137-7F89-4503-898B-132872226C5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skeleton.Analyzers.Package", "Skeleton.Analyzers.Package\Skeleton.Analyzers.Package.csproj", "{B2F7BC56-326C-4C23-B43E-5EC84D40530E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{19E21137-7F89-4503-898B-132872226C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19E21137-7F89-4503-898B-132872226C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19E21137-7F89-4503-898B-132872226C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2F7BC56-326C-4C23-B43E-5EC84D40530E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F7BC56-326C-4C23-B43E-5EC84D40530E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F7BC56-326C-4C23-B43E-5EC84D40530E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F7BC56-326C-4C23-B43E-5EC84D40530E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

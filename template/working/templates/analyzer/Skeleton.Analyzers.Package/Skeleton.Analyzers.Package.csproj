@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>Skeleton.Analizers</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Authors>Authors</Authors>
+        <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
+        <PackageProjectUrl>https://PACKAGE_PROJECT_URL</PackageProjectUrl>
+        <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
+        <RepositoryUrl>https://REPOSITORY_URL</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>DESCRIPTION</Description>
+        <PackageReleaseNotes>PACKAGE RELEASE NOTES</PackageReleaseNotes>
+        <Copyright>COPYRIGHT</Copyright>
+        <PackageTags>analyzers</PackageTags>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+
+        <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Skeleton.Analyzers.Fixes\Skeleton.Analyzers.Fixes.csproj" />
+        <ProjectReference Include="..\Skeleton.Analyzers\Skeleton.Analyzers.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <Target Name="_AddAnalyzersToOutput">
+        <ItemGroup>
+            <TfmSpecificPackageFile Include="$(OutputPath)\Skeleton.Analyzers.dll" PackagePath="analyzers/dotnet/cs" />
+            <TfmSpecificPackageFile Include="$(OutputPath)\Skeleton.Analyzers.Fixes.dll" PackagePath="analyzers/dotnet/cs" />
+        </ItemGroup>
+    </Target>
+
+</Project>
