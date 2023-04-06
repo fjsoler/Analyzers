@@ -149,9 +149,9 @@ namespace TestNamespace
         await VerifyCs.VerifyFixProviderAsync(sourceFileList, sourceFixCodeList, _referenceAssemblies, expectedDiagnostic);
     }
 
-    [Fact]
-    public async void ToCheckPipelineDetectTestErrors()
-    {
-        Assert.Fail("Test to detect error in action github action");
-    }
+    // [Fact]
+    // public async void ToCheckPipelineDetectTestErrors()
+    // {
+    //     Assert.Fail("Test to detect error in action github action");
+    // }
 }

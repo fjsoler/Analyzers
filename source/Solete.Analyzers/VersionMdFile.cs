@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
@@ -26,7 +25,7 @@ public class VersionMdFileAnalyzer : DiagnosticAnalyzer
     private const string SR0005MessageFormat = "The version.md file have not contain the version section";
     private const string SR0005Description = "The version.md file have not contain the version section.";
     
-    private const string Category = "AditionalFile";
+    private const string Category = "AditionalFileValidator";
 
     public static readonly DiagnosticDescriptor RuleVersionMdFileNotExist =
         new DiagnosticDescriptor(DiagnosticIdVersionMdNotExists, SR0003Title, SR0003MessageFormat, Category,

@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.Serialization;
 using Microsoft.CodeAnalysis;
@@ -9,13 +9,13 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace Solete.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class DataContractAttributeRequired : DiagnosticAnalyzer
+public class DataMemberAttributeRequired : DiagnosticAnalyzer
 {
     public const string DiagnosticId = "SR0001";
 
-    private static readonly string Title = "Data contract attribute is required";
-    private static readonly string MessageFormat = "The class '{0}' need the data contract attribute";
-    private static readonly string Description = "If base class have a data contract attribute, data member attribute is required for all derived classes.";
+    private static readonly string Title = "Data member attribute is required";
+    private static readonly string MessageFormat = "The property '{0}' need the data member attribute";
+    private static readonly string Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
 
     private const string Category = "SerializationError";
 
@@ -30,21 +30,28 @@ public class DataContractAttributeRequired : DiagnosticAnalyzer
 
         context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.ClassDeclaration);
     }
-    
+
     private static void AnalyzeNode(SyntaxNodeAnalysisContext context)
     {
         var classNode = context.Node as ClassDeclarationSyntax;
 
         var classSymbol = context.SemanticModel.GetDeclaredSymbol(classNode) as ITypeSymbol;
 
-        if (classSymbol.BaseType != null && !classSymbol.BaseType.GetAttributes()
-                .Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
-            return;
-
-        if (classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
+        if (!classSymbol.GetAttributes().Any(x => x.AttributeClass is { Name: nameof(DataContractAttribute) }))
             return;
         
-        var diagnostic = Diagnostic.Create(DataContractAttributeRequired.Rule, classNode!.GetLocation(), classNode.Identifier);
-        context.ReportDiagnostic(diagnostic);
+        foreach (var propertyNode in classNode!.DescendantNodes().OfType<PropertyDeclarationSyntax>())
+        {
+            if (!propertyNode.Modifiers.Any(x => x.IsKind(SyntaxKind.PublicKeyword)))
+                continue;
+            
+            if (propertyNode.AttributeLists.Any(x =>
+                    x.DescendantNodes().OfType<IdentifierNameSyntax>()
+                        .Any(y => y.Identifier.ValueText != nameof(DataMemberAttribute))))
+                continue;
+            
+            var diagnostic = Diagnostic.Create(Rule, propertyNode.GetLocation(), propertyNode.Identifier);
+            context.ReportDiagnostic(diagnostic);
+        }
     }
 }

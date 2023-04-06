@@ -17,7 +17,7 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
     private static readonly string MessageFormat = "The property '{0}' need the data member attribute";
     private static readonly string Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
 
-    private const string Category = "Serialization";
+    private const string Category = "SerializationError";
 
     public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
 
