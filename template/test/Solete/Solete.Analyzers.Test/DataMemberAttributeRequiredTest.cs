@@ -4,7 +4,6 @@ using Microsoft.CodeAnalysis.Testing;
 using Xunit;
 using VerifyCs = Solete.Analyzers.Test.Utilities.CSharpAnalyzerVerifier<Solete.Analyzers.DataMemberAttributeRequired, Solete.Analyzers.Fixes.DataMemberAttributedRequiredCodeFixProvider>;
 
-
 namespace Solete.Analyzers.Test
 {
     public class DataMemberAttributeRequiredTest

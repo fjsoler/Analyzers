@@ -4,7 +4,6 @@ using Microsoft.CodeAnalysis.Testing;
 using Xunit;
 using VerifyCs = Skeleton.Analyzers.Test.Utilities.CSharpAnalyzerVerifier<Skeleton.Analyzers.DataMemberAttributeRequired, Skeleton.Analyzers.Fixes.DataMemberAttributedRequiredCodeFixProvider>;
 
-
 namespace Skeleton.Analyzers.Test
 {
     public class DataMemberAttributeRequiredTest

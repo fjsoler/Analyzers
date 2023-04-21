@@ -15,11 +15,13 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
 
     private static readonly string Title = "Data member attribute is required";
     private static readonly string MessageFormat = "The property '{0}' need the data member attribute";
-    private static readonly string Description = "If class have a data contract attribute, data member attribute is required for all public properties.";
+    private static readonly string Description = 
+        "If class have a data contract attribute, data member attribute is required for all public properties.";
 
     private const string Category = "SerializationError";
 
-    public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
+    public static readonly DiagnosticDescriptor Rule = 
+        new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Error, isEnabledByDefault: true, description: Description);
 
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
@@ -45,8 +47,11 @@ public class DataMemberAttributeRequired : DiagnosticAnalyzer
             if (!propertyNode.Modifiers.Any(x => x.IsKind(SyntaxKind.PublicKeyword)))
                 continue;
             
-            if (propertyNode.AttributeLists.Any(x =>
-                    x.DescendantNodes().OfType<IdentifierNameSyntax>()
+            if (propertyNode
+                .AttributeLists
+                .Any(x =>
+                    x.DescendantNodes()
+                        .OfType<IdentifierNameSyntax>()
                         .Any(y => y.Identifier.ValueText != nameof(DataMemberAttribute))))
                 continue;
             
