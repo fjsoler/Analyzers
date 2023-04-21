@@ -15,18 +15,6 @@ Microsoft.CodeAnalysis.PublicApiAnalyzers: Helps library authors monitor changes
 Microsoft.CodeAnalysis.Analyzers: Intended projects providing analyzers and code fixes.
 Roslyn.Diagnostics.Analyzers: Rules specific to the Roslyn project, not intended for general consumption.
 
-## How develop an analyzer?
-Antes the ponernos manos a la obra deberiamos pensar un par the cosas:
- 1 IDE: Raider, VS Code or Visual Studio... ect. 
- 2 Net Version: Framework or Core o ambos.
- 
- 
-
-
-## How to test a debug analyser?
-
-## How deploy an analyzer?
-
 ## Solete.Analizer
 
 The version 1.0.2 contains two samples analizers:
