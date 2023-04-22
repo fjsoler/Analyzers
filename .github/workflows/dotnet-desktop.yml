@@ -98,7 +98,7 @@ jobs:
       if: always()
       with:
         files: |
-          TestResults/*.trx
+          **\Analyzers/Analyzers/source/Solete.Analyzers.Test/TestResults/*.trx
       
     #- name: Test Report
     #  uses: dorny/test-reporter@v1
