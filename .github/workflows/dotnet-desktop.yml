@@ -57,6 +57,7 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     permissions:
+      checks: write
       issues: write
       pull-requests: write
       
