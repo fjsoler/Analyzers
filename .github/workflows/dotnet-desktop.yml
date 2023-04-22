@@ -56,6 +56,10 @@ jobs:
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
+    permissions:
+      issues: write
+      pull-requests: write
+      
     env:
       Solution_Name: Analyzers.sln                                                  # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: Solete.Analyzers.Test\Solete.Analyzers.Test.csproj  # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
@@ -89,10 +93,17 @@ jobs:
            dir
            
     # Test report
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
       with:
-          name: dotnet test                                          # Name of the check run which will be created
-          path: \source\Solete.Analyzers.Test\TestResults\test-results.trx  # Path to test results
-          reporter: dotnet-trx                                       # Format of test results
+        files: |
+          TestResults/*.trx
+      
+    #- name: Test Report
+    #  uses: dorny/test-reporter@v1
+    #  if: success() || failure()    # run this step even if previous step failed
+    #  with:
+    #      name: dotnet test                                          # Name of the check run which will be created
+    #      path: \source\Solete.Analyzers.Test\TestResults\test-results.trx  # Path to test results
+    #      reporter: dotnet-trx                                       # Format of test results
