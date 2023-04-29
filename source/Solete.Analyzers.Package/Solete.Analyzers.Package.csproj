@@ -12,15 +12,16 @@
         <PackageId>Solete.Analizers</PackageId>
         <PackageVersion>1.0.2</PackageVersion>
         <Authors>Fco Javier Soler</Authors>
-        <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/fjsoler/Analyzers</PackageProjectUrl>
-        <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon></PackageIcon>
         <RepositoryUrl>https://github.com/fjsoler/Analyzers</RepositoryUrl>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Description>Analyzer</Description>
         <PackageReleaseNotes>Add data contract analyzer required (SR0001).</PackageReleaseNotes>
-        <Copyright>Copyright</Copyright>
-        <PackageTags>DataContractAnalyzer, analyzers</PackageTags>
+        <Copyright>Fco Javier Soler</Copyright>
+        <PackageTags>Analyzers</PackageTags>
         <DevelopmentDependency>true</DevelopmentDependency>
         <NoPackageAnalysis>true</NoPackageAnalysis>
         <!--<PackageOutputDir>C:\Users\javier\RiderProjects\RiderNugets\</PackageOutputDir>-->
@@ -37,10 +38,18 @@
         <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="README.md" />
+      <AdditionalFiles Include="README.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
     <Target Name="_AddAnalyzersToOutput">
         <ItemGroup>
             <TfmSpecificPackageFile Include="$(OutputPath)\Solete.Analyzers.dll" PackagePath="analyzers/dotnet/cs" />
             <TfmSpecificPackageFile Include="$(OutputPath)\Solete.Analyzers.Fixes.dll" PackagePath="analyzers/dotnet/cs" />
+            <TfmSpecificPackageFile Include="$(OutputPath)\README.md" PackagePath="" />
         </ItemGroup>
     </Target>
 
