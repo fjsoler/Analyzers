@@ -46,3 +46,6 @@ https://hackernoon.com/complex-refactoring-with-roslyn-compilers-h32n310k
 
 Roslyn-analyzers-docs
 https://roslyn-analyzers.readthedocs.io/en/latest/nuget-packages.html
+
+.NET compiler platform package version reference - support versions of visual studio
+https://learn.microsoft.com/en-us/visualstudio/extensibility/roslyn-version-support?view=vs-2022
